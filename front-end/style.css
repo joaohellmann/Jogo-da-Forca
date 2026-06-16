@@ -82,14 +82,14 @@ body{
 
 /* TELA PERFIL */
 #recebeNome{
-    z-index: 4;
+    z-index: 2;
     position: absolute;
     top: 270px;
-    left: 559px;
+    left: 570px;
 
     width: 200px;
     height: 20px;
-    border: 2px solid rgba(0, 0, 0);
+    border: 2px solid rgba(0, 0, 0, 0);
     color:rgb(48, 25, 0);
 
     display: flex;
@@ -103,15 +103,15 @@ body{
     z-index: 4;
     position: absolute;
     top: 365px;
-    left: 627px;
+    left: 633px;
 
-    width: 150px;
-    height: 55px;
+    width: 140px;
+    height: 52px;
     border: 2px solid rgba(0, 0, 0, 0);
     color:rgb(48, 25, 0);
 
     display: flex;
-    justify-content:center;
+    justify-content:left;
     align-items: center;
 
     font-size: 45px;
@@ -313,7 +313,7 @@ button{
     height: auto;
 }
 
-/* BOTÃO NO JOGO */
+/* BOTÃO JOGO */
 
 #pausa{
     z-index: 2;
@@ -321,7 +321,7 @@ button{
     top: 98px;
     left: 905px;
     width: 133px;
-    height: 100;
+    height: auto;
 }
 
 #recomecar{
@@ -342,13 +342,69 @@ button{
     height: auto;
 }
 
+/* BOTÃO PERFIL */
+#perfil-voltar{
+    z-index: 2;
+    position: absolute;
+    top: 86px;
+    left: 890px;
+    width: 128px;
+    height: auto;
+}
+
+#perfil-sair{
+    z-index: 2;
+    position: absolute;
+    top: 324px;
+    left: 891px;
+    width: 130px;
+    height: auto;
+}
+
+#perfil-rank{
+    z-index: 2;
+    position: absolute;
+    top: 194px;
+    left: 889px;
+    width: 133px;
+    height: 129px;
+}
+
+/* BOTÃO RANK */
+#rank-voltar{
+    z-index: 2;
+    position: absolute;
+    top: 89px;
+    left: 890px;
+    width: 128px;
+    height: auto;
+}
+
+#rank-buscar{
+    z-index: 2;
+    position: absolute;
+    top: 327px;
+    left: 890px;
+    width: 130px;
+    height: auto;
+}
+
+#rank-perfil{
+    z-index: 2;
+    position: absolute;
+    top: 198px;
+    left: 890px;
+    width: 133px;
+    height: 130px;
+}
+
 /* PAGINAS */
 #login{
     display: none;
 }
 
 #menu-inicial{
-    display: block;
+    display: none;
 }
 
 #iniciar-jogo{
@@ -382,7 +438,7 @@ button{
 }
 
 .tela-pausada{
-    z-index: -3;
+    z-index: 1;
     position: absolute;
     top: auto;
     left: 135px;

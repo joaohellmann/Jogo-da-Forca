@@ -14,61 +14,69 @@ function mostrar(id){
     document.getElementById(id).style.display ="block";
 }
 
-function inicio(){
-    esconderTudo();
-    esconder("login");
-    esconder("nome")
-    esconder("senha")
-    esconder("entrar")
-    esconder("menu-inicial")
-    mostrar("ver-perfil")
-
-}
-
-function entrar(){
-    esconder("nome")
-    esconder("senha")
-    esconder("entrar")
-    voltarMenu();
-}
-
-function esconderTudo(){
+function esconderPag(){
     esconder("tela-pausa");
     esconder("iniciar-jogo");
     esconder("ver-perfil");
     esconder("ver-ranking");
-    document.querySelector(".tela-pausada").style.display = "none";
+    esconder("menu-inicial");
+    esconder("login");
+}
 
+function inicio(){
+    esconderPag();
+    mostrar("login"); 
+}
+
+function entrar(){
+    voltarMenu();
 }
 
 function voltarMenu() {
-    esconderTudo();
+    esconderPag();
     mostrar("menu-inicial");
 }
 
 function verPerfil() {
-    esconder("menu-inicial");
+    esconderPag();
     mostrar("ver-perfil");
+
+    let nome = document.getElementById("nome").value;
+    document.getElementById("recebeNome").textContent= nome;
 }
 
 function abrirRanking() {
-    esconder("menu-inicial");
+    esconderPag();
     mostrar("ver-ranking");
 }
 
 async function sortearPalavra(){
-    const resposta = await fetch("http://127.0.0.1:8000/sortear-palavra");
+    try{
+        const resposta = await fetch("http://127.0.0.1:8000/sortear-palavra");
 
-    const dados = await resposta.json();
+        const dados = await resposta.json();
 
-    console.log(dados)
+        console.log(dados)
 
-    palavra = dados.palavra;
-    dica = dados.dica;
+        palavra = dados.palavra;
+        dica = dados.dica;
+    }catch(error){
+        console.error(error);
+        alert("Erro ao carregar palavra")
+    }
+}
+
+function novoJogo(){
+    rodada = 1;
+    ponto = 0;
+
+    document.getElementById("ideia").parentElement.disabled = false;
+
+    iniciarJogo()
 }
 
 async function iniciarJogo() {
-    esconder("menu-inicial");
+    esconderPag();
     mostrar("iniciar-jogo");
     esconder("termo-correta");
 
@@ -76,13 +84,8 @@ async function iniciarJogo() {
         tecla.style.display = "block";
     });
 
-    document.getElementById("mensagem").innerHTML= ""
+    resetJogo();
 
-    document.querySelectorAll(".botao-letra").forEach(botao => {
-        botao.disabled = false;
-    });
-
-    numeroErro = 0;
     await carregarJogo();
 }
 
@@ -116,8 +119,8 @@ function verificarLetra(letra){
     }else if(!exibicaoPalavra.includes("_")){
         encerrarJogo("Você acertou");
         setTimeout(()=>{
-            console.log("passou 1 seg");
-            ponto += 10 - (numeroErro * 2)
+            console.log("passou 1.5 seg");
+            ponto += Math.max(0, 10 - (numeroErro * 2));
             rodada ++;
             if(rodada === 6){
                 document.getElementById("pontuacao").innerHTML = ponto;
@@ -125,7 +128,7 @@ function verificarLetra(letra){
             }else{
                 iniciarJogo();
             }
-        }, 1000);
+        }, 1500);
     }
     
     document.getElementById('termo').innerHTML = exibicaoPalavra.join("  ");
@@ -141,17 +144,7 @@ function encerrarJogo(mensagem){
     document.getElementById("mensagem").innerHTML= mensagem;
 }
 
-function novoJogo(){
-    rodada = 1;
-    ponto = 0;
-
-    document.getElementById("ideia").parentElement.disabled = false;
-
-    iniciarJogo()
-}
-
 function clicarTecla(letra) {
-    mostrar("tecla-" + letra);
     esconder("tecla-" + letra);
 }
 
@@ -169,8 +162,6 @@ function ideia(){
     }
 }
 
-
-
 function pausar(){
     mostrar("tela-pausa");
     document.querySelector(".tela-pausada").style.display = "block";
@@ -181,6 +172,17 @@ function voltarJogo(){
     document.querySelector(".tela-pausada").style.display = "none";
 }
 
+function resetJogo(){
+    numeroErro = 0;
+
+    esconder("termo-correta");
+
+    document.getElementById("mensagem").innerHTML="";
+    document.querySelectorAll(".botao-letra").forEach(botao => {
+        botao.disabled = false;
+    });
+}
+    
 document.querySelectorAll(".botao-letra").forEach(botao => { 
     botao.addEventListener("click" , ()=> {
     let letra = botao.dataset.letra;
