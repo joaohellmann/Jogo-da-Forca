@@ -9,21 +9,30 @@
 </head>
 <body onload="inicio()">
 
-    <div calss="tela" id="login">
+    <div id="login">
         <img class="fundo" src="fundo/pag-login.png">
-        <input type="text" id="nome" placeholder="NOME DO USUÁRIO"> 
+        <input type="email" id="email-login" placeholder="E-MAIL"> 
         <input type="password" id="senha" placeholder="SENHA"> 
         <button onclick="entrar()" id="entrar">ENTRAR</button>
+        <button onclick="criarConta()" id="criarConta">CRIAR CONTA</button>
     </div> 
 
-    <div id="menu-inicial" calss="tela">
+    <div id="criar-conta">
+        <img class="fundo" src="fundo/pag-criarConta.png">
+        <input type="text" id="criar-nome" placeholder="NOME DO USUÁRIO">
+        <input type="text" id="email" placeholder="E-MAIL"> 
+        <input type="password" id="criar-senha" placeholder="SENHA"> 
+        <button onclick="cadastrar()" id="criar-entrar">SALVAR</button>
+    </div> 
+
+    <div id="menu-inicial">
         <img class="fundo" src="fundo/pag-inicial.jpeg">
         <button onclick="novoJogo()"><img class="botao" id="play" src="botao/play.png"></button>
         <button onclick="verPerfil()"><img class="botao" id="perfil" src="botao/perfil.png"></button>
         <button onclick="abrirRanking()"><img class="botao" id="rank" src="botao/rank.png"></button>
     </div>
 
-    <div id="iniciar-jogo" calss="tela">
+    <div id="iniciar-jogo">
         <img class="fundo" src="fundo/pag-jogo.jpeg">
         <img id="forca" src="forca/forca0.jpeg">
 
@@ -86,22 +95,38 @@
         <button onclick="voltarJogo()"><img class="botao" id="voltarJogo" src="botao/voltar.png"></button>
     </div>
 
-    <div id="ver-perfil" calss="tela">
+    <div id="ver-perfil">
         <img class="fundo" src="fundo/pag-perfil.png">
-        <h1 id="recebeNome">nome</h1>
-        <h1 id="record">1000</h1>
+        <h1 id="recebeNome"></h1>
+        <h1 id="record"></h1>
         
         <button onclick="voltarMenu()"><img class="botao" id="perfil-voltar" src="botao/voltar (2).png"></button>
         <button onclick="abrirRanking()"><img class="botao" id="perfil-rank" src="botao/rank.png"></button>
-        <button onclick="inicio()"><img class="botao" id="perfil-sair" src="botao/sair.png"></button>
+        <button onclick="sair()"><img class="botao" id="perfil-sair" src="botao/sair.png"></button>
 
     </div>
 
-    <div id="ver-ranking" calss="tela">
+    <div id="ver-ranking">
         <img class="fundo" src="fundo/pag-rank.png">
         <button onclick="voltarMenu()"><img class="botao" id="rank-voltar" src="botao/voltar (2).png"></button>
         <button onclick="verPerfil()"><img class="botao" id="rank-perfil" src="botao/perfil.png"></button>
-        <button onclick="inicio()"><img class="botao" id="rank-buscar" src="botao/buscar.png"></button>
+        <button onclick="encontrarMinhaPosicao()"><img class="botao" id="rank-buscar" src="botao/buscar.png"></button>
+        <div id="ranking">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Nome</th>
+                        <th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody id="ranking-body">
+
+                </tbody>
+
+            </table>
+        </div>
+
     </div>
     
     <script src="script.js"></script>

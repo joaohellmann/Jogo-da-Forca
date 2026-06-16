@@ -6,6 +6,9 @@ let exibicaoPalavra;
 let numeroErro;
 let tentativasRestante;
 
+let token = localStorage.getItem("token");
+let emailUsuario = localStorage.getItem("emailUsuario");
+
 function esconder(id){
     document.getElementById(id).style.display ="none";
 }
@@ -21,6 +24,7 @@ function esconderPag(){
     esconder("ver-ranking");
     esconder("menu-inicial");
     esconder("login");
+    esconder("criar-conta");
 }
 
 function inicio(){
@@ -28,26 +32,211 @@ function inicio(){
     mostrar("login"); 
 }
 
-function entrar(){
-    voltarMenu();
+function criarConta(){
+    esconderPag();
+    mostrar("criar-conta");
 }
+
+
+async function entrar(){
+
+    console.log("BOTÃO ENTRAR CLICADO");
+
+    const email = document.getElementById("email-login").value;
+    const senha = document.getElementById("senha").value;
+
+    console.log(email);
+    console.log(senha);
+
+    try{
+
+        const resposta = await fetch(
+            "http://127.0.0.1:8000/login",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        const dados = await resposta.json();
+
+        localStorage.setItem(
+            "token",
+            dados.access_token
+        );
+
+        localStorage.setItem(
+            "emailUsuario",
+            dados.usuario.email
+        );
+
+        token = dados.access_token;
+        emailUsuario = dados.usuario.email;
+
+        voltarMenu();
+
+    }catch(error){
+        alert("Erro ao realizar login");
+        console.error(error);
+    }
+}
+
+async function cadastrar(){
+
+    console.log("BOTÃO CADASTRAR CLICADO");
+
+    const nome = document.getElementById("criar-nome").value;
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("criar-senha").value;
+
+    console.log(nome);
+    console.log(email);
+    console.log(senha);
+
+    try{
+
+        const resposta = await fetch(
+            `http://127.0.0.1:8000/cadastro?nome=${nome}&email=${email}&senha=${senha}`,
+            {
+                method: "POST"
+            }
+        );
+
+        const dados = await resposta.json();
+
+        alert(dados.mensagem);
+
+        inicio();
+
+    }catch(error){
+        alert("Erro ao cadastrar");
+        console.error(error);
+    }
+}
+
 
 function voltarMenu() {
     esconderPag();
     mostrar("menu-inicial");
 }
 
-function verPerfil() {
+async function verPerfil() {
+
     esconderPag();
     mostrar("ver-perfil");
 
-    let nome = document.getElementById("nome").value;
-    document.getElementById("recebeNome").textContent= nome;
+    try{
+
+        const resposta = await fetch(
+            "http://127.0.0.1:8000/perfil",
+            {
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        const dados = await resposta.json();
+
+        document.getElementById("recebeNome").textContent =
+            dados.nome;
+
+        document.getElementById("record").textContent =
+            dados.pontuacao;
+
+    }catch(error){
+        console.error(error);
+    }
 }
 
-function abrirRanking() {
+async function adicionarPontos(valor){
+
+    try{
+
+        await fetch(
+            `http://127.0.0.1:8000/pontuar?pontos=${valor}`,
+            {
+                method:"POST",
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
+            }
+        );
+
+    }catch(error){
+        console.error(error);
+    }
+}
+
+async function abrirRanking() {
+
     esconderPag();
     mostrar("ver-ranking");
+
+    await carregarRanking();
+}
+
+async function carregarRanking(){
+
+    try{
+
+        const resposta = await fetch(
+            "http://127.0.0.1:8000/ranking"
+        );
+
+        const ranking = await resposta.json();
+
+        const tabela =
+            document.getElementById("ranking-body");
+
+        tabela.innerHTML = "";
+
+        ranking.forEach(jogador => {
+
+            let destaque = "";
+
+            if(
+                jogador.email?.toLowerCase() ===
+                emailUsuario?.toLowerCase()
+            ){
+                destaque =
+                    'id="minha-posicao"';
+            }
+
+            tabela.innerHTML += `
+                <tr ${destaque}>
+                    <td>${jogador.posicao}</td>
+                    <td>${jogador.nome}</td>
+                    <td>${jogador.pontuacao}</td>
+                </tr>
+            `;
+        });
+
+    }catch(error){
+        console.error(error);
+    }
+}
+
+function encontrarMinhaPosicao(){
+
+    const linha =
+        document.getElementById(
+            "minha-posicao"
+        );
+
+    if(linha){
+
+        linha.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    }else{
+
+        alert(
+            "Você ainda não aparece no ranking."
+        );
+    }
 }
 
 async function sortearPalavra(){
@@ -89,6 +278,17 @@ async function iniciarJogo() {
     await carregarJogo();
 }
 
+function sair(){
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("emailUsuario");
+
+    token = null;
+    emailUsuario = null;
+
+    inicio();
+}
+
 async function carregarJogo(){
     await sortearPalavra();
 
@@ -120,14 +320,12 @@ function verificarLetra(letra){
         encerrarJogo("Você acertou");
         setTimeout(()=>{
             console.log("passou 1.5 seg");
-            ponto += Math.max(0, 10 - (numeroErro * 2));
-            rodada ++;
-            if(rodada === 6){
-                document.getElementById("pontuacao").innerHTML = ponto;
-                encerrarJogo("Você Ganhou!!!")
-            }else{
-                iniciarJogo();
-            }
+            let pontosGanhos = Math.max(0, 10 - (numeroErro * 2));
+            ponto += pontosGanhos;
+
+            adicionarPontos(pontosGanhos);
+            rodada ++;    
+            iniciarJogo();
         }, 1500);
     }
     

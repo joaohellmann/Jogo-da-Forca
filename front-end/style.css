@@ -38,7 +38,18 @@ body{
     border: 2px solid rgba(39, 15, 3, 0.884);    
 }
 
-#nome{
+#criarConta{
+    z-index: 2;
+    position: absolute;
+    top: 483px;
+    left: 507px;
+
+    width: 110px;
+    height: auto;
+    border: 2px solid rgba(39, 15, 3, 0.884);    
+}
+
+#email-login{
     z-index: 2;
     position: absolute;
     top: 353px;
@@ -46,7 +57,7 @@ body{
 
     width: 290px;
     height: 40px;
-    border: 2px solid rgba(0, 0, 0, 0);
+    border: 2px solid rgb(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
 
     display: flex;
@@ -54,7 +65,7 @@ body{
     align-items: center;
 }
 
-#nome::placeholder{
+#email-login::placeholder{
     color: #220f00c9;
     font-weight: bold;
 }
@@ -79,6 +90,136 @@ body{
     color: #220f00c9;
     font-weight: bold;
 }
+
+/* CRIAR CONTA */
+#criar-entrar{
+    z-index: 2;
+    position: absolute;
+    top: 503px;
+    left: 695px;
+
+    width: 100px;
+    height: auto;
+    border: 2px solid rgba(39, 15, 3, 0.884);    
+}
+
+#criar-nome{
+    z-index: 2;
+    position: absolute;
+    top: 325px;
+    left: 528px;
+
+    width: 255px;
+    height: 35px;
+    border: 2px solid rgb(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#criar-nome::placeholder{
+    color: #220f00c9;
+    font-weight: bold;
+}
+
+#email{
+    z-index: 2;
+    position: absolute;
+    top: 388px;
+    left: 528px;
+
+    width: 255px;
+    height: 35px;
+    border: 2px solid rgb(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#email::placeholder{
+    color: #220f00c9;
+    font-weight: bold;
+}
+
+#criar-senha{
+    z-index: 2;
+    position: absolute;
+    top: 450px;
+    left: 528px;
+
+    width: 255px;
+    height: 35px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#criar-senha::placeholder{
+    color: #220f00c9;
+    font-weight: bold;
+}
+
+/* TABELA RANK */
+#ranking{
+    z-index: 4;
+    position: absolute;
+    top: 179px;
+    left: 458px;
+
+    width: 359px;
+    height: 286px;
+    overflow-y: auto;
+
+    border: 2px solid #422703;
+
+    display: flex;
+    justify-content:flex-start;
+    align-items: flex-start;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th{
+    color:rgba(255, 255, 255, 0);
+
+    position:sticky;
+    top: 0;
+    background: rgb(75, 34, 0);
+
+    z-index: 10;
+}
+
+th, td {
+    border: 1px solid #251500;
+    padding: 7px;
+}
+
+
+#ranking::-webkit-scrollbar{
+    width: 6px;
+}
+
+#ranking::-webkit-scrollbar-track{
+    background: #36140000;
+}
+#ranking::-webkit-scrollbar-thumb{
+    background: #461e00e7;
+    border-radius: 10px;
+}
+#ranking::-webkit-scrollbar-thumb:hover{
+    background: #251500;
+}
+
 
 /* TELA PERFIL */
 #recebeNome{
