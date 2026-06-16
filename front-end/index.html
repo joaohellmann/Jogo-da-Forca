@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="inicio()">
+    <div id="login">
+        <img class="fundo" src="fundo/pag-login.png">
+        <input type="text" id="nome" placeholder="NOME DO USUÁRIO"> 
+        <input type="text" id="senha" placeholder="SENHA"> 
+        <button onclick="entrar()" id="entrar">ENTRAR</button>
+    </div> 
+    <div id="menu-inicial">
+        <img class="fundo" src="fundo/pag-inicial.jpeg">
+        <button onclick="novoJogo()"><img class="botao" id="play" src="botao/play.png"></button>
+        <button onclick="verPerfil()"><img class="botao" id="perfil" src="botao/perfil.png"></button>
+        <button onclick="abrirRanking()"><img class="botao" id="rank" src="botao/rank.png"></button>
+    </div>
+
+    <div id="iniciar-jogo">
+        <img class="fundo" src="fundo/pag-jogo.jpeg">
+        <img id="forca" src="forca/forca0.jpeg">
+
+        <div class="termo">
+            <h1 id="termo" ></h1>
+        </div>
+        <div class="round">
+            <h1 id="round"></h1>
+        </div>
+        <div class="termo-correta">
+            <h1 id="termo-correta"></h1>
+        </div>
+        <div class="pontuacao">
+            <h1 type="number" id="pontuacao"></h1>
+        </div>
+        <div class="dica">
+            <h1 id="dica"></h1>
+        </div>
+        <div class="mensagem">
+            <h1 id="mensagem"></h1>
+        </div>
+
+        <div id="teclado">
+            <button class="botao-letra" onclick="clicarTecla('A')" data-letra="A"><img class="tecla" id="tecla-A" src="teclado/a.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('B')" data-letra="B"><img class="tecla" id="tecla-B" src="teclado/b.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('C')" data-letra="C"><img class="tecla" id="tecla-C" src="teclado/c.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('D')" data-letra="D"><img class="tecla" id="tecla-D" src="teclado/d.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('E')" data-letra="E"><img class="tecla" id="tecla-E" src="teclado/e.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('F')" data-letra="F"><img class="tecla" id="tecla-F" src="teclado/f.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('G')" data-letra="G"><img class="tecla" id="tecla-G" src="teclado/g.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('H')" data-letra="H"><img class="tecla" id="tecla-H" src="teclado/h.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('I')" data-letra="I"><img class="tecla" id="tecla-I" src="teclado/i.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('J')" data-letra="J"><img class="tecla" id="tecla-J" src="teclado/j.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('K')" data-letra="K"><img class="tecla" id="tecla-K" src="teclado/k.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('L')" data-letra="L"><img class="tecla" id="tecla-L" src="teclado/l.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('M')" data-letra="M"><img class="tecla" id="tecla-M" src="teclado/m.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('N')" data-letra="N"><img class="tecla" id="tecla-N" src="teclado/n.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('O')" data-letra="O"><img class="tecla" id="tecla-O" src="teclado/o.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('P')" data-letra="P"><img class="tecla" id="tecla-P" src="teclado/p.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('Q')" data-letra="Q"><img class="tecla" id="tecla-Q" src="teclado/q.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('R')" data-letra="R"><img class="tecla" id="tecla-R" src="teclado/r.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('S')" data-letra="S"><img class="tecla" id="tecla-S" src="teclado/s.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('T')" data-letra="T"><img class="tecla" id="tecla-T" src="teclado/t.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('U')" data-letra="U"><img class="tecla" id="tecla-U" src="teclado/u.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('V')" data-letra="V"><img class="tecla" id="tecla-V" src="teclado/v.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('W')" data-letra="W"><img class="tecla" id="tecla-W" src="teclado/w.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('X')" data-letra="X"><img class="tecla" id="tecla-X" src="teclado/x.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('Y')" data-letra="Y"><img class="tecla" id="tecla-Y" src="teclado/y.png" ></button>
+            <button class="botao-letra" onclick="clicarTecla('Z')" data-letra="Z"><img class="tecla" id="tecla-Z" src="teclado/z.png" ></button>
+        </div>
+
+        <button onclick="pausar()"><img class="botao" id="pausa" src="botao/pausa.png"></button>
+        <button onclick="novoJogo()"><img class="botao" id="recomecar" src="botao/recomecar.png"></button>
+        <button onclick="ideia()"><img class="botao" id="ideia" src="botao/dica.png"></button>
+    </div>
+
+    <div id="tela-pausa">
+        <img class="tela-pausada" src="fundo/pag-pausa.png">
+        <button onclick="voltarMenu()"><img class="botao" id="voltarMenu" src="botao/menu.png"></button>
+        <button onclick="voltarJogo()"><img class="botao" id="voltarJogo" src="botao/voltar.png"></button>
+    </div>
+
+    <div id="ver-perfil">
+        <img class="fundo" src="fundo/pag-perfil.png">
+        <button onclick="voltarMenu()"><img class="botao" id="pausa" src="botao/pausa.png"></button>
+        <h1 id="recebeNome">nome</h1>
+        <h1 id="record">1000</h1>
+
+    </div>
+
+    <div id="ver-ranking">
+        <img class="fundo" src="fundo/pag-rank.png">
+        <button onclick="voltarMenu()"><img class="botao" id="pausa" src="botao/pausa.png"></button>
+    </div>
+    <script src="script.js"></script>
+</body>
+    
+</html>

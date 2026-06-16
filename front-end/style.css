@@ -1,0 +1,607 @@
+/* GERAL */
+body{
+    font-family: Arial, Arial, Helvetica, sans-serif, sans-serif;
+    text-align: center;
+    margin: 50px;
+}
+
+/* FUNDOS */
+.fundo{
+    width: 800px;
+    height: auto;
+
+    position: absolute;
+    top: 50px;
+    left: 258px;
+}
+
+/* FORCA */
+#forca{
+    z-index: 2;
+    width: 168px;
+    height: 210px;
+
+    position: absolute;
+    top: 211px;
+    left: 358px;
+}
+
+/* LOGIN */
+#entrar{
+    z-index: 2;
+    position: absolute;
+    top: 483px;
+    left: 715px;
+
+    width: 100px;
+    height: auto;
+    border: 2px solid rgba(39, 15, 3, 0.884);    
+}
+
+#nome{
+    z-index: 2;
+    position: absolute;
+    top: 353px;
+    left: 510px;
+
+    width: 290px;
+    height: 40px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nome::placeholder{
+    color: #220f00c9;
+    font-weight: bold;
+}
+
+#senha{
+    z-index: 2;
+    position: absolute;
+    top: 426px;
+    left: 510px;
+
+    width: 290px;
+    height: 40px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#senha::placeholder{
+    color: #220f00c9;
+    font-weight: bold;
+}
+
+/* TELA PERFIL */
+#recebeNome{
+    z-index: 4;
+    position: absolute;
+    top: 270px;
+    left: 559px;
+
+    width: 200px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0);
+    color:rgb(48, 25, 0);
+
+    display: flex;
+    justify-content:left;
+    align-items: left;
+
+    font-size: 20px;
+}
+
+#record{
+    z-index: 4;
+    position: absolute;
+    top: 365px;
+    left: 627px;
+
+    width: 150px;
+    height: 55px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    color:rgb(48, 25, 0);
+
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+    font-size: 45px;
+}
+
+/* BOTÃO */
+.botao, .tecla{
+    transition: filter 0.2s ease;
+}
+
+.botao:hover, .tecla:hover{
+    filter: brightness(90%);
+}
+
+.botao:active, .tecla:active{
+    filter: brightness(65%);
+}
+
+button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* TEXTO */
+
+.pontuacao{
+    z-index: 2;
+    position: absolute;
+    top: 149px;
+    left: 395px;
+
+    width: 105px;
+    height: 35px;
+    border: 2px solid rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    font-size: 14px;
+}
+
+#pontuacao{
+    white-space: nowrap;
+    color: rgb(66, 28, 7)
+}
+
+.round{
+    z-index: 2;
+    position: absolute;
+    top: 149px;
+    left: 545.5px;
+
+    width: 61px;
+    height: 35px;
+    border: 2px solid rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    font-size: 14px;
+}
+
+#round{
+    white-space: nowrap;
+    color: rgb(66, 28, 7)
+}
+
+.termo-correta{
+    z-index: 2;
+    position: absolute;
+    top: 149px;
+    left: 648px;
+
+    width: 201px;
+    height: 35px;
+    border: 2px solid rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    font-size: 12px;
+}
+
+#termo-correta{
+    white-space: nowrap;
+    color: rgb(66, 28, 7);
+
+    display: none;
+}
+
+.dica{
+    z-index: 2;
+    position: absolute;
+    top: 374px;
+    left: 551px;
+
+    width: 307px;
+    height: 45px;
+    border: 2px solid rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    font-size: 15px;
+}
+
+#dica{
+    white-space: nowrap;
+    color: rgb(66, 28, 7)
+}
+
+.termo{
+    z-index: 2;
+    position: absolute;
+    top: 290px;
+    left: 555px;
+
+    width: 305px;
+    height: 45px;
+    border: 2px solid rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    font-size: 12px;
+}
+
+#termo{
+    white-space: nowrap;
+    color: rgb(66, 28, 7)
+}
+
+.mensagem{
+    z-index: 2;
+    position: absolute;
+    top: 220px;
+    left: 555px;
+
+    width: 305px;
+    height: 45px;
+    border: 2px solid rgba(0, 0, 0, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    font-size: 20px;
+}
+
+#mensagem{
+    white-space: nowrap;
+    color: rgb(66, 28, 7)
+}
+
+/* BOTÃO MENU */
+#play{
+    z-index: 2;
+    position: absolute;
+    top: 77px;
+    left: 888px;
+    width: 133px;
+    height: auto;
+}
+
+#perfil{
+    z-index: 2;
+    position: absolute;
+    top: 195px;
+    left: 890px;
+    width: 133px;
+    height: auto;
+
+}
+
+#rank{
+    z-index: 2;
+    position: absolute;
+    top: 310px;
+    left: 889px;
+    width: 133px;
+    height: auto;
+}
+
+/* BOTÃO NO JOGO */
+
+#pausa{
+    z-index: 2;
+    position: absolute;
+    top: 98px;
+    left: 905px;
+    width: 133px;
+    height: 100;
+}
+
+#recomecar{
+    z-index: 2;
+    position: absolute;
+    top: 332px;
+    left: 905px;
+    width: 133px;
+    height: auto;
+}
+
+#ideia{
+    z-index: 2;
+    position: absolute;
+    top: 216px;
+    left: 902px;
+    width: 133px;
+    height: auto;
+}
+
+/* PAGINAS */
+#login{
+    display: none;
+}
+
+#menu-inicial{
+    display: block;
+}
+
+#iniciar-jogo{
+    display: none;
+}
+
+#ver-perfil{
+    display: none;
+}
+
+#ver-ranking{
+    display: none;
+}
+
+/* JOGO PAUSADO */
+#tela-pausa{
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+
+    width: 800px;
+    height: 530px;
+    z-index: 3;
+
+    position: absolute;
+    top: 50px;
+    left: 258px;
+
+    background-color: rgba(0, 0, 0, 0.767);
+    display: none;
+}
+
+.tela-pausada{
+    z-index: -3;
+    position: absolute;
+    top: auto;
+    left: 135px;
+
+    width: 530px;
+    height: auto;
+
+    display: none;
+}
+
+#voltarMenu{
+    z-index: 2;
+    position: absolute;
+    top: 185px;
+    left: 255px;
+    width: 288px;
+    height: auto;
+}
+
+#voltarJogo{
+    z-index: 2;
+    position: absolute;
+    top: 310px;
+    left: 255px;
+
+    width: 288px;
+    height: auto;
+}
+
+/* TECLADO */
+.tecla{
+    z-index: 2;
+    width: 30px;
+    height: auto;
+    
+    margin: 5px;
+
+    display: block;
+}
+
+#tecla-A{
+    position: absolute;
+    top: 440px;
+    left: 375px;
+
+    display: block;
+}
+
+#tecla-B{
+    position: absolute;
+    top: 440px;
+    left: 410px;
+    display: block;
+}
+
+#tecla-C{
+    position: absolute;
+    top: 440px;
+    left: 445px;
+    display: block;
+}
+
+#tecla-D{
+    position: absolute;
+    top: 440px;
+    left: 480px;
+    display: block;
+}
+
+#tecla-E{
+    position: absolute;
+    top: 440px;
+    left: 515px;
+    display: block;
+}
+
+#tecla-F{
+    position: absolute;
+    top: 440px;
+    left: 550px;
+    display: block;
+}
+
+#tecla-G{
+    position: absolute;
+    top: 440px;
+    left: 585px;
+    display: block;
+}
+
+#tecla-H{
+    position: absolute;
+    top: 440px;
+    left: 620px;
+    display: block;
+}
+
+#tecla-I{
+    position: absolute;
+    top: 440px;
+    left: 655px;
+    display: block;
+}
+
+#tecla-J{
+    position: absolute;
+    top: 440px;
+    left: 690px;
+    display: block;
+}
+
+#tecla-K{
+    position: absolute;
+    top: 440px;
+    left: 725px;
+    display: block;
+}
+
+#tecla-L{
+    position: absolute;
+    top: 440px;
+    left: 760px;
+    display: block;
+}
+
+#tecla-M{
+    position: absolute;
+    top: 440px;
+    left: 795px;
+    display: block;
+}
+
+#tecla-N{
+    position: absolute;
+    top: 440px;
+    left: 830px;
+    display: block;
+}
+
+#tecla-O{
+    position: absolute;
+    top: 485px;
+    left: 410px;
+    display: block;
+}
+
+#tecla-P{
+    position: absolute;
+    top: 485px;
+    left: 445px;
+    display: block;
+}
+
+#tecla-Q{
+    position: absolute;
+    top: 485px;
+    left: 480px;
+    display: block;
+}
+
+#tecla-R{
+    position: absolute;
+    top: 485px;
+    left: 515px;
+    display: block;
+}
+
+#tecla-S{
+    position: absolute;
+    top: 485px;
+    left: 550px;
+    display: block;
+}
+
+#tecla-T{
+    position: absolute;
+    top: 485px;
+    left: 585px;
+    display: block;
+}
+
+#tecla-U{
+    position: absolute;
+    top: 485px;
+    left: 620px;
+    display: block;
+}
+
+#tecla-V{
+    position: absolute;
+    top: 485px;
+    left: 655px;
+    display: block;
+}
+
+#tecla-W{
+    position: absolute;
+    top: 485px;
+    left: 690px;
+    display: block;
+}
+
+#tecla-X{
+    position: absolute;
+    top: 485px;
+    left: 725px;
+    display: block;
+}
+
+#tecla-Y{
+    position: absolute;
+    top: 485px;
+    left: 760px;
+    display: block;
+}
+
+#tecla-Z{
+    position: absolute;
+    top: 485px;
+    left: 795px;
+    display: block;
+}
