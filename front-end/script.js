@@ -316,7 +316,7 @@ function verificarLetra(letra){
         numeroErro ++;
     }
 
-    if(numeroErro === 6){
+    if(numeroErro === 11){
         encerrarJogo("Você perdeu")
     }else if(!exibicaoPalavra.includes("_")){
         encerrarJogo("Você acertou");
