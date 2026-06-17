@@ -40,13 +40,13 @@ function criarConta(){
 
 async function entrar(){
 
-    console.log("BOTÃO ENTRAR CLICADO");
-
     const email = document.getElementById("email-login").value;
     const senha = document.getElementById("senha").value;
 
-    console.log(email);
-    console.log(senha);
+    const formData = new URLSearchParams();
+
+    formData.append("username", email);
+    formData.append("password", senha);
 
     try{
 
@@ -59,6 +59,8 @@ async function entrar(){
         );
 
         const dados = await resposta.json();
+
+        console.log(dados);
 
         localStorage.setItem(
             "token",
